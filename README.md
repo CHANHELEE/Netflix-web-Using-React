@@ -1,7 +1,7 @@
 # Netflix-web-Using-React  
   
 
-1.3개의 페이지 : 홈페이지, movie 페이지, movieDetail 페이지  
+1. 3개의 페이지 : 홈페이지, movie 페이지, movieDetail 페이지  
 
 2. 홈페이지에서 배너를 볼 수 있다.  
 
