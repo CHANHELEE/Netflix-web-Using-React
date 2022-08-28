@@ -4,6 +4,8 @@ import './App.css';
 import Home from "./page/Home"
 import Movies from "./page/Movies"
 import MovieDetail from "./page/MovieDetail"
+import Navigation from "./component/Navigation";
+
 
 
 /**
@@ -24,7 +26,8 @@ import MovieDetail from "./page/MovieDetail"
  */
 function App() {
   return (
-    <div >
+    <div style={{backgroundColor:"black"}}>
+      <Navigation/>
       <Routes>
         <Route path="/" element={<Home/>}  />
         <Route path="/movies" element={<Movies/>}  />
