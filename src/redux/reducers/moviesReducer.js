@@ -9,6 +9,7 @@ let initialState = {
   video:[],
   review:[],
   recommend:[],
+  detail:[],
   loading:true
 }
 
@@ -48,8 +49,11 @@ const getMovies = createSlice({
     },
     getRecommend(state,action){
       state.recommend = action.payload.recommend;
+      
+    },
+    getDetail(state,action){
+      state.detail=action.payload.detailInfo;
       state.loading= false;
-
     }
 
 

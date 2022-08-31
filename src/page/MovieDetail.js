@@ -12,13 +12,31 @@ import { movieActions } from '../redux/reducers/moviesReducer';
 import MovieCard from '../component/MovieCard';
 import { moviesAction } from '../redux/actions/movieAction'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faPeopleGroup  } from '@fortawesome/free-solid-svg-icons'
+import {faPeopleGroup,faVideo } from '@fortawesome/free-solid-svg-icons'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import YouTube from 'react-youtube';
+import {
+  useWindowWidth
+} from '@react-hook/window-size'
 import ClipLoader from "react-spinners/ClipLoader";
 
 
 
 const MovieDetail = () => {
+  const width = useWindowWidth()
+  console.log("width = ",width-300)
+  const opts = {
+    height: '390',
+    width:width>485?`470`:`${width-40}`,
+    playerVars: {
+      autoplay: 1,
+    },
+  };
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [buttonChecker,buttonSet] = useState(true);
 
   const reviews= () =>{
@@ -39,13 +57,8 @@ const MovieDetail = () => {
   ,[id]);
 
 
-  const {loading,genre,findMovie,video,review,recommend} =useSelector(state => state.movie);
-  console.log("recommend = ",recommend);
-  console.log("review = ", review);
-  console.log("video = ", video)
-  console.log(loading)
-  console.log("movie = ",findMovie);
-  console.log("genre = ",genre);
+  const {loading,genre,findMovie,video,review,recommend,detail} =useSelector(state => state.movie);
+  console.log("video",video)
   if(loading){
     return <div className="spinner"><ClipLoader color="#ffff" loading={loading}  size={150} /></div>
   }
@@ -58,10 +71,10 @@ const MovieDetail = () => {
           </Col>
 
           <Col lg={8} className="detail-info">
-            <div>{ findMovie.genre_ids.map((id)=> <Badge bg="danger" >{genre.data.genres.find((item)=>item.id==id).name}&nbsp;&nbsp;</Badge>)}</div>
+            <div >{ findMovie.genre_ids.map((id)=> <Badge bg="danger" >{genre.data.genres.find((item)=>item.id==id).name}</Badge>)}</div>
             <h1>{findMovie.title}</h1>
             <div>
-              <img style={{width:"20px" }} src='https://jeremyironsno1fan.files.wordpress.com/2009/01/imdb-logo-23962421_std.jpg'></img>
+              <img style={{width:"30px" }} src='https://jeremyironsno1fan.files.wordpress.com/2009/01/imdb-logo-23962421_std.jpg'></img>
               <span>  {findMovie.vote_average}&nbsp;&nbsp;&nbsp;</span>
               <FontAwesomeIcon icon={faPeopleGroup} />
               <span> </span><span>{ findMovie.popularity}</span>
@@ -71,18 +84,40 @@ const MovieDetail = () => {
             <hr></hr>
             <div>{findMovie.overview}</div>
             <hr></hr>
-            <div style={{padding:"5px"}}><Badge bg="danger">Budget</Badge> </div>
-            <div style={{padding:"5px"}}><Badge bg="danger">Revenue</Badge></div>
-            <div style={{padding:"5px"}}><Badge bg="danger">Release Day</Badge></div>
-            <div style={{padding:"5px"}}><Badge bg="danger">Time</Badge></div>
+            <div style={{padding:"5px"}}>
+            <Badge bg="danger">Budget</Badge>
+            <span>&nbsp;&nbsp;{detail.data.budget==0?"unknown":detail.data.budget} $</span>
+            </div>
+            <div style={{padding:"5px"}}>
+            <Badge bg="danger">Revenue</Badge>
+            <span>&nbsp;&nbsp;{detail.data.revenue ==0 ? "Unknown":detail.data.revenue} $ </span>
+            </div>
+            <div style={{padding:"5px"}}>
+            <Badge bg="danger">Release Day</Badge>
+            <span>&nbsp;&nbsp;{detail.data.release_date}</span>
+            </div>
+            <div style={{padding:"5px"}}>
+            <Badge bg="danger">Time</Badge>
+            <span>&nbsp;&nbsp;{detail.data.runtime} min</span>
+            </div>
             <hr></hr>
 
+            <div>
+            <Button variant="link" onClick={handleShow} style={{color:"red", backgroundColor:"none"}}>
+            <FontAwesomeIcon icon={faVideo} /> Watch trailer
+          </Button>
+    
+          <Modal show={show} onHide={handleClose} >
+            <Modal.Header closeButton>
+              <Modal.Title>{findMovie.title}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className='youtube'><YouTube videoId={video.data.results[1].key} opts={opts}   /></Modal.Body>
+          </Modal>
+            </div>
           
           </Col>
-        
-        
         </Row>
-      
+
         <br/><br/><br/><br/><br/><br/>
         <div className="detail-button">
           <span className = "detail-button-box" onClick={reviews} style={{backgroundColor: buttonChecker ? 'red' : '' , color: buttonChecker ? 'white' : ''}}>Reviews{`(${review.data.results.length})`}</span>

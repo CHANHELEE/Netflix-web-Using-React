@@ -72,6 +72,7 @@
 
 .detail-info {
   color: white;
+
 }
 
 .detail-button-box{
@@ -97,6 +98,7 @@
   border: 1px solid white;
   width: 50%;
   margin: 0 auto;
+ 
 }
 
 .reviews * {
@@ -105,6 +107,7 @@
 
 .review-content{
   padding: 50px;
+ 
 }
 
 .detail-container{
@@ -119,3 +122,6 @@
   flex-wrap: wrap;
 
 }
+
+
+
