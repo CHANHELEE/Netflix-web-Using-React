@@ -3,7 +3,6 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import MovieCard from './MovieCard';
 const MovieSlide = ({movie}) => {
-  console.log(movie);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -12,7 +11,7 @@ const MovieSlide = ({movie}) => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 5
+      items: 4
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -27,7 +26,7 @@ const MovieSlide = ({movie}) => {
   return (
     <div>
       <Carousel responsive={responsive}>
-        {movie.data.results.map((movie)=> <MovieCard movie={movie} key={movie.id}/>) }
+        {movie.data.results.map((movie)=> <MovieCard  movie={movie} key={movie.id}/>) }
       </Carousel>;
     </div>
   )

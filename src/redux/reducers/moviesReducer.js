@@ -5,6 +5,10 @@ let initialState = {
   topRatedMovies:[],
   upComingMovies:[],
   genre:[],
+  findMovie:[],
+  video:[],
+  review:[],
+  recommend:[],
   loading:true
 }
 
@@ -21,10 +25,11 @@ const getMovies = createSlice({
     },
     getUpComingMovie(state,action){
       state.upComingMovies = action.payload.upComingMovies;
-      state.loading=false;
+      
     },
     getGenre(state,action){
       state.genre = action.payload.genre;
+
     },
     changeSpinnerTrue(state){
       state.loading=true;
@@ -32,6 +37,22 @@ const getMovies = createSlice({
     getFail(state){
       state.loading=false;
     },
+    getFindMovie(state,action){
+      state.findMovie = action.payload.findMovie.data.movie_results[0];
+    },
+    getVideo(state,action){
+      state.video = action.payload.video;
+    },
+    getReview(state,action){
+      state.review = action.payload.review;
+    },
+    getRecommend(state,action){
+      state.recommend = action.payload.recommend;
+      state.loading= false;
+
+    }
+
+
   }
 })
 

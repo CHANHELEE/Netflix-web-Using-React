@@ -17,7 +17,7 @@ const Home = () => {
   ,[])
 
   const {popularMovies,topRatedMovies,upComingMovies,loading} = useSelector(state => state.movie);
-
+  console.log(popularMovies)
   if(loading){
     return <div className="spinner"><ClipLoader color="#ffff" loading={loading}  size={150} /></div>
   }

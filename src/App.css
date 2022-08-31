@@ -3,7 +3,7 @@
 }
 
 .nav-item{
-  padding: 7px;
+  padding: 15px;
   color:  white;
   text-decoration: none;
 }
@@ -68,4 +68,54 @@
   width: 350px;
   height: 250px;
   transition: 0.5s;
+}
+
+.detail-info {
+  color: white;
+}
+
+.detail-button-box{
+  text-align: center;
+  padding: 10px;
+  width: 200px;
+  color: gray;
+  border: 1px solid gray;
+  background-color: white;
+}
+
+.detail-button-box:hover{
+  cursor: pointer;
+}
+
+.detail-button{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.reviews{
+  border: 1px solid white;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.reviews * {
+  color:white
+}
+
+.review-content{
+  padding: 50px;
+}
+
+.detail-container{
+  margin-top: 30px;
+}
+
+.recommend {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
 }
