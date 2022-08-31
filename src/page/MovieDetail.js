@@ -25,7 +25,6 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 const MovieDetail = () => {
   const width = useWindowWidth()
-  console.log("width = ",width-300)
   const opts = {
     height: '390',
     width:width>485?`470`:`${width-40}`,
@@ -111,7 +110,7 @@ const MovieDetail = () => {
             <Modal.Header closeButton>
               <Modal.Title>{findMovie.title}</Modal.Title>
             </Modal.Header>
-            <Modal.Body className='youtube'><YouTube videoId={video.data.results[1].key} opts={opts}   /></Modal.Body>
+            <Modal.Body >{video.data.results[1]?<YouTube videoId={video.data.results[1].key} opts={opts}/>:"There is No Trailer"}</Modal.Body>
           </Modal>
             </div>
           
