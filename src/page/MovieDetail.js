@@ -57,7 +57,6 @@ const MovieDetail = () => {
 
 
   const {loading,genre,findMovie,video,review,recommend,detail} =useSelector(state => state.movie);
-  console.log("video",video)
   if(loading){
     return <div className="spinner"><ClipLoader color="#ffff" loading={loading}  size={150} /></div>
   }
@@ -66,7 +65,7 @@ const MovieDetail = () => {
       <Container className="detail-container">
         <Row>
           <Col lg={4}>
-            <img style={{border:"1px solid white"}} src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${findMovie.poster_path}`}></img>
+            {findMovie.poster_path?<img style={{border:"1px solid white"}} src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${findMovie.poster_path}`}></img> : ""}
           </Col>
 
           <Col lg={8} className="detail-info">
