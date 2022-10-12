@@ -21,12 +21,12 @@ const Navigation = () => {
           navbarScroll
         >
           <Link to="/" className="nav-item">Home</Link>
-          <Link to="/movies" className="nav-item">Movies</Link>
+          <Link to="/movies" className="nav-item">Movies(To be developed)</Link>
         </Nav>
         <Form className="d-flex">
           <Form.Control
             type="search"
-            placeholder="Search"
+            placeholder="Search To be developed"
             className="me-2"
             aria-label="Search"
           />
