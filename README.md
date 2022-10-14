@@ -1,5 +1,6 @@
 # Netflix-web-Using-React  
   
+  ## netlify 배포 url  : https://chanhees-netflix.netlify.app/
 
 1. 3개의 페이지 : 홈페이지, movie 페이지, movieDetail 페이지  
 
