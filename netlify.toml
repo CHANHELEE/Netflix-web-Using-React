@@ -1,7 +1,0 @@
-// netlify.toml
-[build]
-  command = "CI= npm run build"
-  publish = "build"
-
-[context.production.environment]
-  REACT_APP_API_KEY=b928eaffb1e31edcb0705b0ed279f30c
