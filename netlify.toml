@@ -4,6 +4,4 @@
   publish = "build"
 
 [context.production.environment]
-  TOML_ENV_VAR = "From netlify.toml"
-  REACT_APP_TOML_ENV_VAR = "From netlify.toml (REACT_APP_)"
   REACT_APP_API_KEY=b928eaffb1e31edcb0705b0ed279f30c
